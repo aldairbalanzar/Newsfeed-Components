@@ -128,17 +128,26 @@ function createArticle(dataArr) {
   let p1 = document.createElement('p');
   let p2 = document.createElement('p');
   let p3 = document.createElement('p');
+  let span = document.createElement('span');
+  
+  
 
   title.textContent = dataArr.title;
   date.textContent = dataArr.date;
   p1.textContent = dataArr.firstParagraph;
   p2.textContent = dataArr.secondParagraph;
   p3.textContent = dataArr.thirdParagraph;
+  span.textContent = '\u25bc';
 
   article.classList.add('article');
   date.classList.add('date');
+  span.classList.add('expandButton');
 
-  article.append(title, date, p1, p2, p3);
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  article.append(title, date, p1, p2, p3, span);
   articleDiv.append(article);
 
   return article;

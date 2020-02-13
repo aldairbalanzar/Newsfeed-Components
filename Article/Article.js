@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: `my article`,
+    date: `feb 12th, 2020`,
+    firstParagraph: `this`,
+    secondParagraph: `is`, 
+    thirdParagraph: `article`
   }
 ];
 
@@ -112,3 +119,31 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const articleDiv = document.querySelector('.articles');
+
+function createArticle(dataArr) {
+  let article = document.createElement('div');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let p3 = document.createElement('p');
+
+  title.textContent = dataArr.title;
+  date.textContent = dataArr.date;
+  p1.textContent = dataArr.firstParagraph;
+  p2.textContent = dataArr.secondParagraph;
+  p3.textContent = dataArr.thirdParagraph;
+
+  article.classList.add('article');
+  date.classList.add('date');
+
+  article.append(title, date, p1, p2, p3);
+  articleDiv.append(article);
+
+  return article;
+}
+
+data.forEach(article => {
+  articleDiv.appendChild(createArticle(article));
+})

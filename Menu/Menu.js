@@ -37,7 +37,7 @@ let body = document.querySelector('body');
 body.append(createMenu(menuItems));
 let menuBtn = document.querySelector('.menu-button');
 
-function createMenu (arr) {
+function createMenu(arr) {
   let menu = document.createElement('div');
   let list = document.createElement('ul');
   menu.classList.add('menu');
@@ -52,4 +52,9 @@ function createMenu (arr) {
 
 menuBtn.addEventListener('click', () => {
   document.querySelector('.menu').classList.toggle('menu--open');
+  gsap.to(document.querySelector('.menu'), {
+    duration: 0.6,
+    rotateY: 360,
+    ease: 'elastice(1, 0.75)'
+  })
 })
